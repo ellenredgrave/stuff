@@ -11,8 +11,8 @@ The webapp lets the user enter their location and dietary requirement and then l
 
 ## Coding
 *Highlight your approach to coding in this project.*
-I split the coding up into different sections, first creating a base HTML file for each page, outlining what was wanted on each page. A base CSS file was created for the entire page. Next the server was created and in conjunction with a javascript file for each page, I CODED. Using SQL manager, I created a database 
-produced a back-end server that recieves form info and creates unique pages based on form. Also updates and pulls from SQL database.
+I split the coding up into different sections, first creating a base HTML file for each page, outlining what was wanted on each page. A base CSS file was created for the entire page. Next the server was created and in conjunction with a javascript file for each page, I CODED. Using SQL manager, I created a database with the relevant tables.
+I produced a back-end server that updates and gets information from an SQL database.
 
 ## UX/UI
 *Outline the key elements of your UX/UI design.*
@@ -21,10 +21,11 @@ No extra info, clear navigation
 Reviews automatically update when submitted
 More than two users can use website and see each other's reviews.
 Ratings change on user feedback
+The design of the webapp focuses on being simple and effective. There is a small bit of text on each page to let the user know what is happening and how to use the webapp. However minimal text is used so that it is not overwhelming. More than 2 users can use the webapp at the same time, and different people can submit and see each other's reviews. The reviews automatically appear on the page once submitted, creating a better user experience as there is instant feedback. The form submissions are minimal and simple.
 
 ## Data
 *Explain how you structure and process your data.*
-The code reads and writes to an SQL database and uses joins to get information. Webapp pulls specific data based off the form submissions and what is clicked on.
+The code reads and writes to an SQL database and uses joins to get information. Tje webapp pulls specific data based off the form submissions and what is clicked on.
 
 ## Debugging
 *Describe how you used debugging practices and tools and how they helped you overcome a bug or conceptual issue.*
