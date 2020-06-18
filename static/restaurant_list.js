@@ -1,5 +1,5 @@
-window.addEventListener("DOMContentLoaded", (event) => {
-
+window.addEventListener("DOMContentLoaded", function (event) {
+//Get params from url
 const params = new URLSearchParams(window.location.search);
 
 let town = params.get("town");
@@ -8,8 +8,9 @@ let needs = params.get("needs");
 const url = "/restaurants_for_town_needs?town_list=" + town;
 console.log(url);
 
-
+//Get the restaurant list and add it to page
 function GetRestaurantList(){
+    //change the header depending on the database results
     function AddHeader(data) {
         console.log(data);
         let entry = data[0];
@@ -25,7 +26,9 @@ function GetRestaurantList(){
 const RestList = GetRestaurantList;
 
 window.onload = RestList;
-
+//Depending on what requirement was selected,
+//Add to restaurant list so that the restaurants in the
+//town with the correct requirement are displayed
 $.getJSON(url, {}, function (data) {
 console.log(data);
     if (needs === "vegetarian") {

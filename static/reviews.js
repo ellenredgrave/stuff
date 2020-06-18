@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", function (event) {
 
 //Set username with prompt. Do not accept if empty
 function setUserName() {
@@ -17,7 +17,7 @@ function setUserName() {
 let myHeading = document.querySelector("h2");
 var name = localStorage.getItem("name");
 
-//When page has loaded, ask name if not in local storage, otherwise update header.
+//When page loaded, ask name if not in local storage, otherwise update header.
 if(!localStorage.getItem("name")) {
     setUserName();
     var name = setUserName();
@@ -62,7 +62,8 @@ function AddComment(data) {
 const AddCom = AddComment;
 $.getJSON(url, {}, AddCom);
 
-
+//Change the titles so that the user knows who they are adding
+// A review for
 function SetVariableTitles() {
     let header = restaurant;
     document.getElementById("restaurant").innerHTML = header;
@@ -75,7 +76,8 @@ const VarTitles = SetVariableTitles;
 window.onload = VarTitles;
 
 
-
+//When form is submitted, update the url so that the comment can be added
+//to database and shown on page
 function on_submit() {
     let star_rating = params.get("star_rating");
     let comment = params.get("comment");
@@ -85,13 +87,12 @@ function on_submit() {
 
 let y = document.getElementById("submit");
 
-
+//Do not submit form if rating is empty
 function IsRatingEmpty() {
     let x;
     x = document.getElementById("star_rating").value;
     if (x === "-") {
         alert("Enter a star rating before submitting your review");
-        //DO NOT SUBMIT FORM
         return false;
     }
   }

@@ -15,38 +15,32 @@ console.log("Connected to the database.");
 
 app.use("/", express.static("static"));
 
-app.use("/foo", express.json());
-app.post("/bar", function (req, res) {
-    const responseObj = handler(req.body);
-    res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(responseObj));
-});
 
-
-
+//Select all towns from the town_list table
 app.get("/find_restaurant", function (req, res) {
     let sql = "SELECT town_id, town_name FROM town_list";
     let db = new sqlite3.Database(db_name);
 
 
-  db.all(sql, [], (err, rows) => {
+  db.all(sql, [], function (err, rows) {
   if (err) {
     throw err;
   }
-  rows.forEach((row) => {
+  rows.forEach(function (row) {
     console.log(row.town_name);
   });
+  //return as string in this format
   res.send(rows [0].town_name);
 });
 db.close();
 })
 
 
-
+//Select towns from town list, and return as a json string of dicts
 app.get("/list_towns", function (req, res) {
     let sql = "SELECT town_id, town_name FROM town_list";
     let db = new sqlite3.Database(db_name);
-  db.all(sql, [], (err, rows) => {
+  db.all(sql, [], function (err, rows) {
   if (err) {
     throw err;
   }
@@ -57,11 +51,11 @@ db.close();
 
 
 
-
+//Select restaurant list and return as a json string of dicts
 app.get("/list_restaurants", function (req, res) {
   let sql = "SELECT restaurant_id, restaurant_name FROM restaurant_list";
   let db = new sqlite3.Database(db_name);
-db.all(sql, [], (err, rows) => {
+db.all(sql, [], function (err, rows) {
 if (err) {
   throw err;
 }
@@ -71,7 +65,8 @@ db.close();
 });
 
 
-
+//Select reviews in review table and select the reviews
+//for the correct restaurant and requirement
 app.get("/list_reviews", function (req, res) {
   let sql = `SELECT  rl.restaurant_name, rv.requirement, rv.star_rating,
   rv.comment FROM reviews rv
@@ -80,7 +75,7 @@ app.get("/list_reviews", function (req, res) {
   let db = new sqlite3.Database(db_name);
   let restaurant = req.query.restaurant_choice;
   let requirement = req.query.requirement_choice;
-db.all(sql, [restaurant, requirement], (err, rows) => {
+db.all(sql, [restaurant, requirement], function (err, rows) {
 if (err) {
   throw err;
 }
@@ -89,8 +84,8 @@ res.send(JSON.stringify(rows));
 db.close();
 });
 
-
-
+//Add reviews. Insert reviews into review table
+//Depending on previeus choices
 app.post("/add_review", function (req, res) {
    let db = new sqlite3.Database(db_name);
    let sql = `INSERT INTO reviews( restaurant_id,
@@ -107,10 +102,10 @@ db.run(sql, [restaurant, requirement, star_rating, comment],
   if (err) {
     return console.log(err.message);
   }
- // console.log(`A row has been inserted with rowid ${this.lastID}`);
   console.log(restaurant, requirement, star_rating, comment);
 });
-//MAKE THIS WORK TOMORROW!!
+//Update the total stars and number of reviews 
+//for that restaurant and requirement
 let sql1 = `UPDATE restaurant_list set ${requirement}_total_stars=${requirement}_total_stars + ?,
 ${requirement}_num_reviews = ${requirement}_num_reviews + 1 where restaurant_id =?`;
   db.run(sql1, [star_rating, restaurant],
@@ -118,14 +113,13 @@ ${requirement}_num_reviews = ${requirement}_num_reviews + 1 where restaurant_id 
     if (err) {
       return console.log(err.message);
     }
- //  console.log(`row ${this.lastID} has been updated`);
 db.close();
 res.redirect("back");
 });
 });
 
 
-
+//Select all the information on a restaurant, depending on town chosen
 app.get("/restaurants_for_town_needs", function (req, res) {
     let sql = `SELECT restaurant_id, restaurant_name,
     vegan_total_stars, vegan_num_reviews, vegan_total_stars,
@@ -139,7 +133,7 @@ app.get("/restaurants_for_town_needs", function (req, res) {
     where r.town_id = ?`;
     let db = new sqlite3.Database(db_name);
     let town = req.query.town_list;
-    db.all(sql, [town], (err, rows) => {
+    db.all(sql, [town], function (err, rows) {
         if (err) {
           throw err;
         }
