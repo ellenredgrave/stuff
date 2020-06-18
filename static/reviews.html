@@ -1,0 +1,58 @@
+<html lang="en-gb">
+<meta charset="utf-8">
+<title>Where to Eat</title>
+<link rel="stylesheet" href="reviews.css">
+<link rel="shortcut icon" href="favicon.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="module" src="reviews.js"  delay></script>
+
+    <body>
+      
+        <div class="review">
+        <h2 id="plz_leave_review"></h2>
+        <form action="/add_review" method="post">
+            <ul>
+            <li>
+            <input type="hidden" id="restaurant_choice" name="restaurant_choice">
+            </li>
+            <li>
+            <input type="hidden" id="requirement_choice" name="requirement_choice">
+            </li>
+            <li>
+                <label for="star_rating">Please give a rating out of five</label>
+                <select id="star_rating" name="star_rating" required>
+                    <option>-</option>
+                    <option value=1>1 Star</option>
+                    <option value=2>2 Star</option>
+                    <option value=3>3 Star</option>
+                    <option value=4>4 Star</option>
+                    <option value=5>5 Star</option>
+                  </select>
+            </li>
+            <li>
+                <label for="comment">Please give a short review</label>
+                <input id="comment" type="text" name="comment" required>
+            </li>
+            <li class="button" >
+                <button id="submit" type="submit" value="submit">Share with other users</button>
+            </li>
+            </ul>
+        </form>
+      </div>
+        <div class="rev_list">
+          <h1 id=restaurant></h1>
+        <ul id=review_list></ul>
+      </div>
+
+<div class="nav">
+        <nav>
+            <ul>
+              <li>
+                <a href=index.html>Find Restaurants</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+    </body>
+</html>

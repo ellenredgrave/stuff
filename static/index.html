@@ -1,0 +1,52 @@
+<html lang="en-gb">
+    <meta charset="utf-8">
+    <title>Where to eat</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="favicon.png">
+   <script type="module" src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+ 
+<div class="nav">
+    <nav>
+      <ul>
+        <li>
+          <a href=index.html>Find Restaurants</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+    <body>
+    <div class="index">
+      <head>
+        <h1>Where To Eat</h1>
+        <p>For when you're going out to eat but need help choosing which restaurant suits your needs.</p>
+    </head>
+
+
+        <h2>Find a restaurant</h2>
+        <form action="restaurant_list.html">
+          <ul>
+            <li>
+              <label for="where">Where are you?</label>
+              <select id="where" name="town">
+              </select>
+            </li>
+            <li> 
+              <label for="requ">What are your requirements?</label>
+              <select id="requ" name="needs">
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="coeliac">Gluten Free</option>
+              </select>
+            </li>
+            <li>
+              <input id="submit_button" type="submit" value="Submit">
+            </li>
+          </ul>
+        </form>
+      </div>
+
+    </body>
+</html>

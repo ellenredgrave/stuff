@@ -1,0 +1,28 @@
+{
+  "name": "coursework",
+  "version": "1.0.0",
+  "description": "Creating veggie site.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DE1-Computing-2/week-5-tuesday-ellenredgrave.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DE1-Computing-2/week-5-tuesday-ellenredgrave/issues"
+  },
+  "homepage": "https://github.com/DE1-Computing-2/week-5-tuesday-ellenredgrave#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1"
+  }
+}
